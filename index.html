@@ -231,6 +231,8 @@
   shaders.load( 'ss-fire' , 'fire' , 'simulation' );
   shaders.load( 'vs-cube' , 'cube' , 'vertex' );
   shaders.load( 'fs-cube' , 'cube' , 'fragment' );
+  shaders.load( 'vs-finger' , 'finger' , 'vertex' );
+  shaders.load( 'fs-finger' , 'finger' , 'fragment' );
 
   shaders.shaderSetLoaded = function(){
    onLoad();
@@ -370,7 +372,21 @@
 
 
     var g = new THREE.IcosahedronGeometry( 4 , 3 );
-    var m = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: refractionCube, refractionRatio: .9 } );
+    var m = new THREE.ShaderMaterial( { 
+      vertexShader: shaders.vertexShaders.finger,
+      fragmentShader: shaders.fragmentShaders.finger,
+
+      blending: THREE.AdditiveBlending,
+      transparent: true,
+      uniforms:{
+
+        t_refl:{type:"t" , value:reflectionCube},
+        t_audio:G_UNIFORMS.t_audio,
+        custom1:{ type:"f" , value:.95 }
+
+      }
+    
+    } );
 
     for( var i =0; i<50; i++ ){
 
