@@ -331,6 +331,14 @@
         path + 'pz' + format, path + 'nz' + format
     ];
 
+    var path = "img/cubemap/brud/";
+    var format = '.jpg';
+    var urls = [
+        path + 'posx' + format, path + 'negx' + format,
+        path + 'posy' + format, path + 'negy' + format,
+        path + 'posz' + format, path + 'negz' + format
+    ];
+
     cubeCamera = new THREE.CubeCamera( 10, 10000, 256 ); // parameters: near, far, resolution
     cubeCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter; // mipmap filter
     cubeCamera.position.set( 0, 0, 0 );
@@ -462,10 +470,14 @@
       if( !REPELERS[i].active ){
       //console.log( REPELERS[i].target );
         tv1.copy( REPELERS[i].target );
+
+        tv1.applyQuaternion( camera.quaternion );
+        
         tv1.sub( REPELERS[i].position );
 
         tv1.multiplyScalar( .1 );
 
+        
         //console.log( tv1.x );
         REPELERS[i].position.add( tv1 );
          
