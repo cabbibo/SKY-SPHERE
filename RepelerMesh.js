@@ -16,11 +16,15 @@ function RepelerMesh( title , mesh , repelers , extraParams ){
 
   var s = shaders.setValue( shaders.simulationShaders.fire , 'SIZE' , st );
  
-   
+  
+  this.rotationSpeed = .1;
+
   var extraParams = extraParams || {};
   console.log( extraParams );
   var params =  {
 
+    rotationSpeed: .1,
+    rotationRadius: 300,
     repelers: REPELERS,
 
     vs: extraParams.vs || shaders.vertexShaders.fire,
@@ -39,7 +43,6 @@ function RepelerMesh( title , mesh , repelers , extraParams ){
       repulsionPower:     { type:"f" , value: 1. , constraints:[-100  , 100] },
       repulsionRadius:     { type:"f" , value: 1. , constraints:[-100  , 100] },
       
-      maxVel:             { type:"f" , value: 30.   , constraints:[ 0 , 100 ] }, 
       t_audio:            G_UNIFORMS.t_audio,
 
       repelers:         { type:"v3v" , value:[] },
@@ -54,9 +57,6 @@ function RepelerMesh( title , mesh , repelers , extraParams ){
       audioDisplacement:{ type:"f" , value : 0.0 ,  constraints:[ 0 , 20 ]},
       
       custom1:{type:"f" , value: .04,  constraints:[ 0.00001 , 1]},
-      custom2:{type:"f" , value: .31,  constraints:[ 0.00001 , 1]},
-      custom3:{type:"f" , value: 1, constraints:[ 0.00001 , 1]},
-      
       lightPos:{type:"v3" , value: new THREE.Vector3( 10 , 1 , 1 )},
       
       t_audio:   G_UNIFORMS.t_audio,
@@ -111,14 +111,14 @@ function RepelerMesh( title , mesh , repelers , extraParams ){
 
   guis.appendChild( gHolder );
 
-  $(tHolder).click(function(){
+  /*$(tHolder).click(function(){
     this.toggle();
     if( this.active ){
       this.tHolder.className = "active";
     }else{
       this.tHolder.className = "";
     }
-  }.bind( gem ));
+  }.bind( gem ));*/
 
 
   $(tHolder).hover(function(){
@@ -134,6 +134,7 @@ function RepelerMesh( title , mesh , repelers , extraParams ){
   gem.gui = new GUI( params , {
    domElement: gHolder 
   });
+
 
   return gem;
 

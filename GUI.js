@@ -17,6 +17,9 @@ function GUI( PARAMS ,  params ){
   this.domElement = this.params.domElement;
   this.domElement.appendChild(this.gui.domElement);
 
+  this.gui.add( PARAMS , 'rotationSpeed' , 0 , 1 );
+  this.gui.add( PARAMS , 'rotationRadius' , 10 , 400 );
+
 
   this.soul = this.gui.addFolder( 'Soul' );
   this.body = this.gui.addFolder( 'Body' );

@@ -22,7 +22,7 @@ Arrangements = {
   randomSphere: function( radius ){
 
 
-    var radius = radius || 15;
+    var radius = radius || 90;
 
     for( var i = 0; i < REPELERS.length; i++ ){
 
