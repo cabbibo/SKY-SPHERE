@@ -333,13 +333,13 @@
         path + 'pz' + format, path + 'nz' + format
     ];
 
-    var path = "img/cubemap/brud/";
+  /*  var path = "img/cubemap/brud/";
     var format = '.jpg';
     var urls = [
         path + 'posx' + format, path + 'negx' + format,
         path + 'posy' + format, path + 'negy' + format,
         path + 'posz' + format, path + 'negz' + format
-    ];
+    ];*/
 
     cubeCamera = new THREE.CubeCamera( 10, 10000, 256 ); // parameters: near, far, resolution
     cubeCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter; // mipmap filter
@@ -368,7 +368,7 @@
 
 
     mesh = new THREE.Mesh( new THREE.BoxGeometry( 5000, 5000, 5000 ), material );
-    scene.add( mesh );
+    //scene.add( mesh );
 
 
     var g = new THREE.IcosahedronGeometry( 4 , 3 );
