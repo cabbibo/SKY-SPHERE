@@ -333,6 +333,16 @@
         path + 'pz' + format, path + 'nz' + format
     ];
 
+    
+    var path = "img/cubemap/space/";
+    var format = '.png';
+    var urls = [
+        path + 'px' + format, path + 'nx' + format,
+        path + 'py' + format, path + 'ny' + format,
+        path + 'pz' + format, path + 'nz' + format
+    ];
+
+
   /*  var path = "img/cubemap/brud/";
     var format = '.jpg';
     var urls = [
@@ -368,7 +378,7 @@
 
 
     mesh = new THREE.Mesh( new THREE.BoxGeometry( 5000, 5000, 5000 ), material );
-    //scene.add( mesh );
+    scene.add( mesh );
 
 
     var g = new THREE.IcosahedronGeometry( 4 , 3 );
